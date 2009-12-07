@@ -1,0 +1,47 @@
+0. What's this
+
+Project beanstalkj is a Java implementation of the popular lightweight beanstalkd message queue 
+server.
+
+IMPORTANT:
+
+If you are looking for original beanstalkd project you want go here:
+[1] - http://github.com/kr/beanstalkd/ 
+
+If you are looking for beanstalk Java CLIENT you want go here:
+[2] - http://github.com/RTykulsker/JavaBeanstalkClient/ 
+
+If you are looking for beanstalk protocol reference you want to go here:
+[3] - http://github.com/kr/beanstalkd/blob/master/doc/protocol.txt
+
+If you are curious about Server implementation, you may read further :) 
+
+
+
+1. Story
+
+When I first met beanstalkd I was very excited by its simplicity and power. We started used it in 
+our internal project at my current job (sorry for some conspiracy:) ). Firstly we used it only in our 
+python workers. I was responsible for java part of our cloud computing infrastructure, so I wanted to
+use beanstalk too. I quickly found proper Java client (http://github.com/RTykulsker/JavaBeanstalkClient/) 
+which was suited my needs. However, I realised that I need proper JUnit tests for my workers which were 
+producing and consuming jobs from queues. There were two choices. First was a launching beanstalkd as
+a separate process in every test case. And other was writing mock objects for client which had to mimic
+beanstalkd operations according to protocol reference. Second option was more Java friendly, so I chose
+that one.
+
+After I started writing mock tests using Java collections (PriorityBlockingQueue, ), I realized that I 
+was implementing beanstalk server, except of networking and full protocol coverage. That time I was 
+playing with different Java networking frameworks, and finally chose Netty to replace home-grown one.
+
+So, finally impressed with clear protocol.txt guidelines [3] and keeping in my mind Netty with Java core
+I started development.
+
+2. How-to use
+
+
+
+
+
+
+
